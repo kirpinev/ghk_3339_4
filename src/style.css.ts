@@ -1,4 +1,4 @@
-import { style } from "@vanilla-extract/css";
+import { globalStyle, style } from "@vanilla-extract/css";
 
 const bottomBtn = style({
   position: "fixed",
@@ -24,14 +24,6 @@ const box = style({
   border: "2px solid #F3F4F5",
 });
 
-const radioCheck = style({
-  maxWidth: "236px",
-});
-
-const radioSmart = style({
-  maxWidth: "296px",
-});
-
 const radioContainer = style({
   display: "flex",
   alignItems: "center",
@@ -53,6 +45,10 @@ const radioTextContainer = style({
   boxSizing: "border-box",
   border: "2px solid black",
   borderRadius: "var(--border-radius-xl)",
+});
+
+globalStyle(`${radioTextContainer} > p:nth-of-type(1)`, {
+  fontWeight: "500",
 });
 
 const radioSmartMore = style({
@@ -77,8 +73,6 @@ export const appSt = {
   bottomBtn,
   container,
   box,
-  radioSmart,
-  radioCheck,
   radioContainer,
   radioTextContainer,
   radioTextContainerSelected,

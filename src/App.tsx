@@ -87,7 +87,7 @@ export const App = () => {
         </div>
 
         <Typography.TitleResponsive
-          style={{ marginTop: "1.5rem" }}
+          style={{ marginTop: "1.5rem", marginBottom: "0.5rem" }}
           tag="h3"
           view="xsmall"
           font="system"
@@ -206,6 +206,7 @@ export const App = () => {
             view="xsmall"
             font="system"
             weight="semibold"
+            style={{ marginBottom: "0.5rem" }}
           >
             Что входит в подписку
           </Typography.TitleResponsive>
