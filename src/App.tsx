@@ -115,7 +115,7 @@ export const App = () => {
               view="primary-medium"
               defaultMargins={false}
             >
-              Альфа чек — 99 руб. в месяц
+              Альфа Чек
             </Typography.Text>
             <Typography.Text
               tag="p"
@@ -157,7 +157,7 @@ export const App = () => {
               view="primary-medium"
               defaultMargins={false}
             >
-              Альфа Смарт — 299 руб. в месяц
+              Альфа Смарт
             </Typography.Text>
             <Typography.Text
               tag="p"
@@ -166,7 +166,7 @@ export const App = () => {
               color="secondary"
               style={{ marginTop: "4px", width: "100%", maxWidth: "260px" }}
             >
-              Дополнительные возможности, вместе с пуш-уведомлениями
+              Включает Альфа Чек, плюс дополнительные опции
             </Typography.Text>
             <div className={appSt.radioSmartMore}>
               <Typography.Text
@@ -214,11 +214,12 @@ export const App = () => {
             <List.Item>+1 топовая категория кэшбэка</List.Item>
             <List.Item>+1 попытка крутить барабан суперкэшбэка</List.Item>
             <List.Item>Секретная подборка партнёров с кэшбэков</List.Item>
-            <List.Item>Увеличенный лимит кэшбэка +1 % годовых</List.Item>
+            <List.Item>Увеличенный лимит кэшбэка</List.Item>
+            <List.Item>+1% годовых</List.Item>
             <List.Item>Бесплатные уведомления</List.Item>
             <List.Item>Бесплатные переводы</List.Item>
             <List.Item>Бесплатное снятие наличных</List.Item>
-            <List.Item>Скидка 20 % на комиссию на бирже</List.Item>
+            <List.Item>Скидка 20% на комиссию на бирже</List.Item>
           </List>
         </Collapse>
       </div>
