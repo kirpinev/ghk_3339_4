@@ -108,7 +108,7 @@ export const App = () => {
           />
           <div className={appSt.radioTextContainer}>
             <Status color="grey" className={appSt.status} view="contrast">
-              Текущее
+              Текущая
             </Status>
             <Typography.Text
               tag="p"
