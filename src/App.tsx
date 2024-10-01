@@ -107,9 +107,6 @@ export const App = () => {
             block={false}
           />
           <div className={appSt.radioTextContainer}>
-            <Status color="grey" className={appSt.status} view="contrast">
-              Текущая
-            </Status>
             <Typography.Text
               tag="p"
               view="primary-medium"
