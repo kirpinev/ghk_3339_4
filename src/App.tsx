@@ -1,6 +1,6 @@
 import { ButtonMobile } from "@alfalab/core-components/button/mobile";
 import { Typography } from "@alfalab/core-components/typography";
-import { useCallback, useState } from "react";
+import { useState } from "react";
 
 import alfa from "./assets/alfa-card.png";
 import { LS, LSKeys } from "./ls";
@@ -12,10 +12,11 @@ import { List } from "@alfalab/core-components/list";
 import { Gap } from "@alfalab/core-components/gap";
 import { SmartLayout } from "./smart/SmartLayout.tsx";
 import { Status } from "@alfalab/core-components/status";
+import { sendDataToGA } from "./utils/events.ts";
 
 enum Product {
-  Check = "alfa-check",
-  Smart = "alfa-smart",
+  Check = "AlfaCheck",
+  Smart = "AlfaSmart",
 }
 
 export const App = () => {
@@ -24,18 +25,25 @@ export const App = () => {
   const [selectedOption, setSelectedOption] = useState<Product | null>(null);
   const [showSmart, setShowSmart] = useState(false);
   const [expanded, setExpanded] = useState(false);
+  const [detailsShown, setDetailsShown] = useState(false);
 
-  const submit = useCallback(() => {
+  const clickDetails = () => {
+    window.gtag("event", "sub_hidden_3339_4_click");
+  };
+
+  const submit = () => {
     setLoading(true);
-    // sendDataToGA({})
-    Promise.resolve().then(() => {
+    sendDataToGA({
+      sub_choice: selectedOption,
+      sub_hidden: detailsShown ? "Yes" : "No",
+    }).then(() => {
       LS.setItem(LSKeys.ShowThx, true);
       setThx(true);
       setLoading(false);
     });
-  }, []);
+  };
 
-  const handleSelection = useCallback(() => {
+  const handleSelection = () => {
     if (selectedOption === Product.Smart) {
       setShowSmart(true);
     }
@@ -43,27 +51,33 @@ export const App = () => {
     if (selectedOption === Product.Check) {
       submit();
     }
-  }, [selectedOption]);
+  };
 
-  const handleShowThx = useCallback(() => {
+  const handleShowThx = () => {
     setThx(true);
-  }, []);
+  };
 
-  const handleScrollBottom = useCallback((expanded: boolean) => {
+  const handleScrollBottom = (expanded: boolean) => {
     if (expanded) {
       window.scrollTo({
         top: document.body.scrollHeight,
         behavior: "smooth",
       });
     }
-  }, []);
+  };
 
   if (thxShow) {
     return <ThxLayout />;
   }
 
   if (showSmart) {
-    return <SmartLayout handleShowThx={handleShowThx} />;
+    return (
+      <SmartLayout
+        handleShowThx={handleShowThx}
+        selectedOption={selectedOption}
+        detailsShown={detailsShown}
+      />
+    );
   }
 
   return (
@@ -192,7 +206,11 @@ export const App = () => {
           size="xs"
           block={false}
           className={appSt.smartOptionsButton}
-          onClick={() => setExpanded((prev) => !prev)}
+          onClick={() => {
+            clickDetails();
+            setDetailsShown(true);
+            setExpanded((prev) => !prev);
+          }}
         >
           Все опции Альфа Смарт
         </ButtonMobile>
